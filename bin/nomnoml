@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var commander = require('commander'),
+    exporter = require('../lib/exporter');
+
+commander.version('0.1.0')
+    .usage('[option]')
+    .option('-i, --input <path>', 'file with nomnoml source to read from')
+    .option('-o, --output <path>', 'file for the image output to write to')
+    .option('-w, --width <pixels>', 'width of the canvas to draw on', parseInt)
+    .option('-h, --height <pixels>', 'height of the canvas to draw on', parseInt);
+
+commander.on('--help', function () {
+  console.log('The output format is PNG.  The default canvas size is 640x480 pixels.');
+  console.log('If the input file is omitted, the source is read from the standard input.');
+  console.log('If the output file is omitted, the image is written to the standard output.');
+});
+
+commander.parse(process.argv);
+
+var options = {
+  output: commander.output || process.stdout,
+  width: commander.width,
+  height: commander.height
+};
+if (commander.input) {
+  options.inputFile = commander.input;
+} else {
+  options.input = process.stdin;
+}
+
+exporter(options);

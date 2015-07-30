@@ -1,0 +1,8 @@
+.git
+.gitignore
+.editorconfig
+.idea
+.npmignore
+Gruntfile.js
+node_modules
+npm-debug.log
