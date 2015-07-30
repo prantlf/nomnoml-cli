@@ -17,7 +17,7 @@ npm install -g nomnoml-cli
 echo '[nomnoml]is->[awesome]' | nomnoml > awesome.png
 ```
 
-3. Read the documentation about the [nomnoml source format](https://github.com/skanaar/nomnoml#example)
+Read the documentation about the [nomnoml source format](https://github.com/skanaar/nomnoml#example)
 
 ## Usage Details
 
