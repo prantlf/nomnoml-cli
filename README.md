@@ -4,9 +4,11 @@
 
 Generates images from [nomnoml](http://www.nomnoml.com/) diagram sources
 on the command line and provides a library for a programmatic usage from
-NodeJS modules
+[NodeJS] modules
 
 ## Getting Started
+
+Make sure that you have [NodeJS] >= 0.12 installed.
 
 1. Install [pre-requisites](https://github.com/Automattic/node-canvas/wiki/_pages)
    of the [node-canvas](https://github.com/Automattic/node-canvas) module depending
@@ -26,10 +28,12 @@ Read the documentation about the [nomnoml source format](https://github.com/skan
 The `nomnoml` script generates a PNG image from the nomnoml source text.
 Both file names and standard input and output are supported as parameters.
 
-```bash
+```text
 $ nomnoml --help
 
   Usage: nomnoml [option]
+
+    Generates PNG images from nomnoml diagram sources
 
   Options:
 
@@ -40,9 +44,14 @@ $ nomnoml --help
     -w, --width <pixels>   width of the canvas to draw on
     -h, --height <pixels>  height of the canvas to draw on
 
-The output format is PNG.  The default canvas size is 640x480 pixels.
-If the input file is omitted, the source is read from the standard input.
-If the output file is omitted, the image is written to the standard output.
+  The output format is PNG.  The default canvas size is 640x480 pixels.
+  If the input file is omitted, the source is read from the standard input.
+  If the output file is omitted, the image is written to the standard output.
+
+  Examples:
+
+    $ echo '[nomnoml]is->[awesome]' | nomnoml > awesome.png
+    $ nomnoml -i source.nomnoml -o target.png
 ```
 
 ## Programmatic Usage
@@ -75,7 +84,7 @@ fails.  If `output` is not provided, the function resolves the promise
 with a [Buffer] containing the image.  If `output` is provided, the
 function returns a promise resolved when the output has been written.
 
-Samples:
+### Code Samples
 
 ```javascript
 var generateDiagram = require('nomnoml-cli');
@@ -116,6 +125,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2015-07-31   v0.1.1   Improve the documentation
  * 2015-07-30   v0.1.0   Initial release
 
 ## License
@@ -125,5 +135,6 @@ Copyright (c) 2015 Ferdinand Prantl
 Licensed under the MIT license.
 
 [Buffer]: https://nodejs.org/api/buffer.html
+[NodeJS]: http://nodejs.org/
 [Stream]: https://nodejs.org/api/stream.html
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

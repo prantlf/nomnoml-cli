@@ -3,7 +3,8 @@
 var commander = require('commander'),
     exporter = require('../lib/exporter');
 
-commander.version('0.1.0')
+commander.version('0.1.1')
+    .description('  Generates PNG images from nomnoml diagram sources')
     .usage('[option]')
     .option('-i, --input <path>', 'file with nomnoml source to read from')
     .option('-o, --output <path>', 'file for the image output to write to')
@@ -11,9 +12,14 @@ commander.version('0.1.0')
     .option('-h, --height <pixels>', 'height of the canvas to draw on', parseInt);
 
 commander.on('--help', function () {
-  console.log('The output format is PNG.  The default canvas size is 640x480 pixels.');
-  console.log('If the input file is omitted, the source is read from the standard input.');
-  console.log('If the output file is omitted, the image is written to the standard output.');
+  console.log('  The output format is PNG.  The default canvas size is 640x480 pixels.');
+  console.log('  If the input file is omitted, the source is read from the standard input.');
+  console.log('  If the output file is omitted, the image is written to the standard output.');
+  console.log();
+  console.log('  Examples:');
+  console.log();
+  console.log('    $ echo \'[nomnoml]is->[awesome]\' | nomnoml > awesome.png');
+  console.log('    $ nomnoml -i source.nomnoml -o target.png');
 });
 
 commander.parse(process.argv);
