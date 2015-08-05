@@ -1,9 +1,8 @@
-language : node_js
-node_js :
+language: node_js
+node_js:
     - "0.12"
 before_install:
-    - npm install -g npm
     - sudo apt-get update -qq
     - sudo apt-get install -y libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
-before_script :
+    - npm install -g npm
     - npm install -g grunt-cli
