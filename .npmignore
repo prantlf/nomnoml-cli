@@ -3,6 +3,7 @@
 .editorconfig
 .idea
 .npmignore
+.travis.yml
 Gruntfile.js
 node_modules
 npm-debug.log
