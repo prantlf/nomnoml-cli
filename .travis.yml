@@ -1,10 +1,11 @@
 language: node_js
 node_js:
     - "0.12"
-install:
+before_install:
     - sudo apt-get update -y -qq
     - sudo apt-get install -y libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
     - npm install -g npm
-    - npm install
 before_script:
     - npm install -g grunt-cli
+after_script:
+    - npm run coveralls

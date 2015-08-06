@@ -1,7 +1,7 @@
 {
   "name": "nomnoml-cli",
   "description": "Generates images from nomnoml diagram sources on the command line",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/prantlf/nomnoml-cli",
   "author": {
     "name": "Ferdinand Prantl",
@@ -25,14 +25,14 @@
   "engines": {
     "node": ">= 0.12.0"
   },
-  "main": "./lib/exporter.js",
+  "main": "./lib/generate.js",
   "bin": {
     "nomnoml": "./bin/nomnoml"
   },
   "scripts": {
     "test": "grunt test",
-    "check_coverage": "grunt instrument && GRUNT_EMBED_FONTS_COVERAGE=1 grunt test",
-    "post_coverage": "grunt instrument && GRUNT_EMBED_FONTS_COVERAGE=1 grunt post_coverage"
+    "check_coverage": "grunt instrument && GRUNT_NOMNOML_CLI_COVERAGE=1 grunt test",
+    "post_coverage": "grunt instrument && GRUNT_NOMNOML_CLI_COVERAGE=1 grunt post_coverage"
   },
   "dependencies": {
     "canvas": "~1.2.7",
@@ -42,7 +42,12 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-coveralls": "^1.0.0",
+    "grunt-jscoverage": "^0.1.3",
+    "grunt-shell": "~1.1.2",
     "jshint-stylish": "^2.0.1",
     "load-grunt-tasks": "^3.2.0",
     "time-grunt": "^1.2.1"

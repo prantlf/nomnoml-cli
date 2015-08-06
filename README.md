@@ -1,4 +1,4 @@
-# nomnoml-cli [![NPM version](https://badge.fury.io/js/nomnoml-cli.png)](http://badge.fury.io/js/nomnoml-cli) [![Build Status](https://travis-ci.org/prantlf/nomnoml-cli.png)](https://travis-ci.org/prantlf/nomnoml-cli) [![Dependency Status](https://david-dm.org/prantlf/nomnoml-cli.svg)](https://david-dm.org/prantlf/nomnoml-cli) [![devDependency Status](https://david-dm.org/prantlf/nomnoml-cli/dev-status.svg)](https://david-dm.org/prantlf/nomnoml-cli#info=devDependencies) [![Code Climate](https://codeclimate.com/github/prantlf/nomnoml-cli/badges/gpa.svg)](https://codeclimate.com/github/prantlf/nomnoml-cli) [![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/nomnoml-cli) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# nomnoml-cli [![NPM version](https://badge.fury.io/js/nomnoml-cli.png)](http://badge.fury.io/js/nomnoml-cli) [![Build Status](https://travis-ci.org/prantlf/nomnoml-cli.png)](https://travis-ci.org/prantlf/nomnoml-cli) [![Coverage Status](https://coveralls.io/repos/prantlf/nomnoml-cli/badge.svg)](https://coveralls.io/r/prantlf/nomnoml-cli) [![Dependency Status](https://david-dm.org/prantlf/nomnoml-cli.svg)](https://david-dm.org/prantlf/nomnoml-cli) [![devDependency Status](https://david-dm.org/prantlf/nomnoml-cli/dev-status.svg)](https://david-dm.org/prantlf/nomnoml-cli#info=devDependencies) [![Code Climate](https://codeclimate.com/github/prantlf/nomnoml-cli/badges/gpa.svg)](https://codeclimate.com/github/prantlf/nomnoml-cli) [![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/nomnoml-cli) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 [![NPM Downloads](https://nodei.co/npm/nomnoml-cli.png?downloads=true&stars=true)](https://www.npmjs.com/package/nomnoml-cli)
 
@@ -32,8 +32,6 @@ Both file names and standard input and output are supported as parameters.
 $ nomnoml --help
 
   Usage: nomnoml [option]
-
-    Generates PNG images from nomnoml diagram sources
 
   Options:
 
@@ -71,13 +69,16 @@ Supported properties in the `options` parameter are:
 * `inputFile`: source file path to read the nomnoml source from
 * `output`: target to write the image to; either a [Stream] or a `string`
     with the file path (undefined by default)
+* `resultType`: type of the object to resolve the promise with if the
+    `output` parameter is not provided ('buffer' or 'stream'; the former
+    is default)
 * `width`: canvas width in pixels (640 by default)
 * `height`: canvas height in pixels (480 by default)
 
-The function retuns a [Promise].
+The function returns a [Promise] to wait for the success or failure.
 
-The nomnoml source text can be passed into the function instead of the
-`options` object directly to be treated as the `ipnput` option.
+The nomnoml source text can be passed into the function directly instead
+of the `options` object and it will be treated as the `input` option.
 
 Either `input` or `inputFile` has to be provided, otherwise the function
 fails.  If `output` is not provided, the function resolves the promise
@@ -125,6 +126,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2015-08-05   v0.2.0   Add the `resultType` option and tests
  * 2015-07-31   v0.1.1   Improve the documentation
  * 2015-07-30   v0.1.0   Initial release
 

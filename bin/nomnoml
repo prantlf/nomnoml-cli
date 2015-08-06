@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 var commander = require('commander'),
-    exporter = require('../lib/exporter');
+    generateDiagram = require('../lib/generate');
 
-commander.version('0.1.1')
+commander.version('0.2.0')
     .description('  Generates PNG images from nomnoml diagram sources')
     .usage('[option]')
     .option('-i, --input <path>', 'file with nomnoml source to read from')
@@ -35,4 +35,4 @@ if (commander.input) {
   options.input = process.stdin;
 }
 
-exporter(options);
+generateDiagram(options);
