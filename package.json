@@ -31,8 +31,8 @@
   },
   "scripts": {
     "test": "grunt test",
-    "check_coverage": "grunt instrument && GRUNT_NOMNOML_CLI_COVERAGE=1 grunt test",
-    "post_coverage": "grunt instrument && GRUNT_NOMNOML_CLI_COVERAGE=1 grunt post_coverage"
+    "check_coverage": "grunt instrument && NOMNOML_CLI_COVERAGE=1 grunt test",
+    "post_coverage": "grunt instrument && NOMNOML_CLI_COVERAGE=1 grunt post_coverage"
   },
   "dependencies": {
     "canvas": "~1.2.7",

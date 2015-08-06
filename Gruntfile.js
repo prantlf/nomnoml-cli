@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-  var coverage = process.env.GRUNT_EMBED_FONTS_COVERAGE;
+  var coverage = process.env.NOMNOML_CLI_COVERAGE;
 
   require('time-grunt')(grunt);
 

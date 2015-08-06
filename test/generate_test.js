@@ -2,7 +2,9 @@
 
 var fs = require('fs'),
     path = require('path'),
-    generateDiagram = require('../lib/generate');
+    coverage = process.env.NOMNOML_CLI_COVERAGE,
+    generateDiagram = require(coverage ?
+      '../coverage/lib/generate' : '../lib/generate');
 
 exports.when = {
 
