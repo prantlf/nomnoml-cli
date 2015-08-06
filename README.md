@@ -126,6 +126,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2015-08-06   v0.2.1   Fix code coverage computation
  * 2015-08-05   v0.2.0   Add the `resultType` option and tests
  * 2015-07-31   v0.1.1   Improve the documentation
  * 2015-07-30   v0.1.0   Initial release
