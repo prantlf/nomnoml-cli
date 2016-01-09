@@ -126,6 +126,8 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-01-09   v0.2.2   Upgrade development dependencies, fix e-mail,
+                         update copyright year
  * 2015-10-24   v0.2.2   Upgrade development dependencies, test with
                          the latest prantlf/nomnoml#combined
  * 2015-08-06   v0.2.1   Fix code coverage computation
@@ -135,7 +137,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015 Ferdinand Prantl
+Copyright (c) 2015-2016 Ferdinand Prantl
 
 Licensed under the MIT license.
 
