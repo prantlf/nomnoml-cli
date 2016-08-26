@@ -126,6 +126,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2016-26-08   v0.3.0   Upgrade to Grunt 1.x
  * 2016-01-09   v0.2.2   Upgrade development dependencies, fix e-mail,
                          update copyright year
  * 2015-10-24   v0.2.2   Upgrade development dependencies, test with
