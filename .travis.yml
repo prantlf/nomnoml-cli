@@ -1,14 +1,23 @@
-language: node_js
 node_js:
     - "0.12"
-branches:
-  except:
-      - /^v[0-9]/
+    - "4"
+    - "5"
+    - "6"
+addons:
+    apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - libcairo2-dev
+        - libjpeg8-dev
+        - libpango1.0-dev
+        - libgif-dev
+        - build-essential
+        - g++-4.8
+env:
+    - CXX=g++-4.8
 before_install:
-    - sudo apt-get update -y -qq
-    - sudo apt-get install -y libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
     - npm install -g npm
 before_script:
     - npm install -g grunt-cli
-after_script:
-    - npm run coveralls
+sudo: false
