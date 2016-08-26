@@ -28,11 +28,7 @@ module.exports = function (grunt) {
     },
 
     nodeunit: {
-      tests:   ['test/*_test.js'],
-      options: {
-        reporter: coverage ? 'lcov' : 'verbose',
-        reporterOutput: coverage ? 'coverage/tests.lcov' : undefined
-      }
+      tests:   ['test/*_test.js']
     },
 
     clean: {
@@ -40,17 +36,32 @@ module.exports = function (grunt) {
       coverage: ['coverage']
     },
 
-    jscoverage: {
-      all: {
-        expand: true,
-        src:    'lib/*.js',
-        dest:   'coverage/'
+    instrument: {
+      files: 'lib/*.js',
+      options: {
+        lazy: true,
+        basePath: 'coverage/'
+      }
+    },
+
+    storeCoverage: {
+      options: {
+        dir: 'coverage'
+      }
+    },
+
+    makeReport: {
+      src: 'coverage/coverage.json',
+      options: {
+        type: 'lcov',
+        dir: 'coverage',
+        print: 'detail'
       }
     },
 
     coveralls: {
       tests: {
-        src: 'coverage/tests.lcov'
+        src: 'coverage/lcov.info'
       }
     }
 
@@ -58,9 +69,9 @@ module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['jshint', 'clean:tests', 'shell', 'nodeunit']);
-  grunt.registerTask('instrument', ['jshint', 'clean', 'jscoverage']);
-  grunt.registerTask('post_coverage', ['test', 'coveralls']);
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('default', coverage ?
+    ['jshint', 'clean', 'instrument', 'shell', 'nodeunit',
+     'storeCoverage', 'makeReport'] :
+    ['jshint', 'clean:tests', 'shell', 'nodeunit']);
 
 };
