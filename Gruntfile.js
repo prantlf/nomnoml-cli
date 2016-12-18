@@ -22,8 +22,11 @@ module.exports = function (grunt) {
     },
 
     shell: {
-      create: {
+      createPNG: {
         command: 'node ./bin/nomnoml -i ./test/piracy.nomnoml -o ./test/piracy.png'
+      },
+      createSVG: {
+        command: 'node ./bin/nomnoml -i ./test/piracy.nomnoml -o ./test/piracy.svg -f svg'
       }
     },
 

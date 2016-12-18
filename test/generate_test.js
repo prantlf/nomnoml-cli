@@ -16,6 +16,14 @@ exports.when = {
     test.done();
   },
 
+  'called on the command line with format=svg': function (test) {
+    var name = path.join(__dirname, 'piracy'),
+        output = fs.statSync(name + '.svg');
+    test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
+    fs.unlinkSync(name + '.svg');
+    test.done();
+  },
+
   'required': function (test) {
     test.equal('function', typeof generateDiagram, 'returns a generator function');
     test.done();
@@ -126,6 +134,27 @@ exports.when = {
       });
   },
 
+  'called with input and output streams, with format=svg': function (test) {
+    var name = path.join(__dirname, 'piracy'),
+        promise = generateDiagram({
+          input: fs.createReadStream(name + '.nomnoml'),
+          format: 'svg',
+          output: fs.createWriteStream(name + '.svg')
+        });
+    promise
+      .then(function (result) {
+        var output = fs.statSync(name + '.svg');
+        test.ok(true, 'succeeds');
+        test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
+        fs.unlinkSync(name + '.svg');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
   'called with correct input and output file names': function (test) {
     var name = path.join(__dirname, 'piracy'),
         promise = generateDiagram({
@@ -138,6 +167,27 @@ exports.when = {
         test.ok(true, 'succeeds');
         test.ok(output.isFile() && output.size > 0, 'creates a PNG file');
         fs.unlinkSync(name + '.png');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
+  'called with correct input and output file names, with format=svg': function (test) {
+    var name = path.join(__dirname, 'piracy'),
+        promise = generateDiagram({
+          inputFile: name + '.nomnoml',
+          format: 'svg',
+          output: name + '.svg'
+        });
+    promise
+      .then(function (result) {
+        var output = fs.statSync(name + '.svg');
+        test.ok(true, 'succeeds');
+        test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
+        fs.unlinkSync(name + '.svg');
         test.done();
       })
       .catch(function (error) {
