@@ -126,7 +126,7 @@ exports.when = {
       });
   },
 
-  'called with correct input and ouptut file names': function (test) {
+  'called with correct input and output file names': function (test) {
     var name = path.join(__dirname, 'piracy'),
         promise = generateDiagram({
           inputFile: name + '.nomnoml',
