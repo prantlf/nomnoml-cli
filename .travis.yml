@@ -2,26 +2,34 @@ sudo: false
 language : node_js
 node_js:
   - "0.12"
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libcairo2-dev
-      - libjpeg8-dev
-      - libpango1.0-dev
-      - libgif-dev
-      - build-essential
-      - gcc-4.8
-      - g++-4.8
-      - gcc-5
-      - g++-5
 matrix:
   include:
-    - env:
-        - CXX=g++-4.8
-    - env:
-        - CXX=g++-5
+    - env: CXX=g++-4.8
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libcairo2-dev
+            - libjpeg8-dev
+            - libpango1.0-dev
+            - libgif-dev
+            - build-essential
+            - gcc-4.8
+            - g++-4.8
+    - env: CXX=g++-5
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libcairo2-dev
+            - libjpeg8-dev
+            - libpango1.0-dev
+            - libgif-dev
+            - build-essential
+            - gcc-5
+            - g++-5
 before_install:
   - npm install -g npm
   - gcc --version
