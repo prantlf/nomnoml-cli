@@ -1,42 +1,27 @@
 sudo: false
-dist: xenial
 language : node_js
 node_js:
   - "0.12"
-  - "4"
-  - "5"
-  - "6"
-  - "7"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libcairo2-dev
+      - libjpeg8-dev
+      - libpango1.0-dev
+      - libgif-dev
+      - build-essential
+      - g++-4.8
+      - g++-5
 matrix:
   include:
     - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - libcairo2-dev
-            - libjpeg8-dev
-            - libpango1.0-dev
-            - libgif-dev
-            - build-essential
-            - g++-4.8
       env:
-        - CXX=g++-4.8
+        - COMPILER=g++-4.8
     - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - libcairo2-dev
-            - libjpeg8-dev
-            - libpango1.0-dev
-            - libgif-dev
-            - build-essential
-            - g++-5
       env:
-        - CXX=g++-5
+        - COMPILER=g++-5
 before_install:
   - npm install -g npm
 before_script:
