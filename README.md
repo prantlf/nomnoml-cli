@@ -39,17 +39,18 @@ $ nomnoml --help
     -V, --version          output the version number
     -i, --input <path>     file with nomnoml source to read from
     -o, --output <path>    file for the image output to write to
+    -f, --format <format>  output format (png or svg)
     -w, --width <pixels>   width of the canvas to draw on
     -h, --height <pixels>  height of the canvas to draw on
 
-  The output format is PNG.  The default canvas size is 640x480 pixels.
+  The default output format is PNG.  The default canvas size is 640x480 pixels.
   If the input file is omitted, the source is read from the standard input.
   If the output file is omitted, the image is written to the standard output.
 
   Examples:
 
     $ echo '[nomnoml]is->[awesome]' | nomnoml > awesome.png
-    $ nomnoml -i source.nomnoml -o target.png
+    $ nomnoml -i source.nomnoml -f svg -o target.svg
 ```
 
 ## Programmatic Usage
@@ -72,6 +73,7 @@ Supported properties in the `options` parameter are:
 * `resultType`: type of the object to resolve the promise with if the
     `output` parameter is not provided ('buffer' or 'stream'; the former
     is default)
+* `format`: output image format ('png' or 'svg'; the former is default)
 * `width`: canvas width in pixels (640 by default)
 * `height`: canvas height in pixels (480 by default)
 
@@ -126,7 +128,7 @@ your code using Grunt.
 
 ## Release History
 
- * 2016-12-19   v0.4.1   Add --format to be able to select between PNG
+ * 2016-12-19   v0.4.2   Add --format to be able to select between PNG
                          and SVG (thanks, Emanuele Aina)
  * 2016-26-08   v0.3.0   Upgrade to Grunt 1.x
  * 2016-01-09   v0.2.2   Upgrade development dependencies, fix e-mail,

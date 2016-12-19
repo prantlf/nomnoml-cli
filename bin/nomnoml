@@ -20,7 +20,7 @@ commander.on('--help', function () {
   console.log('  Examples:');
   console.log();
   console.log('    $ echo \'[nomnoml]is->[awesome]\' | nomnoml > awesome.png');
-  console.log('    $ nomnoml -i source.nomnoml -o target.png');
+  console.log('    $ nomnoml -i source.nomnoml -f svg -o target.svg');
 });
 
 commander.parse(process.argv);
