@@ -17,13 +17,11 @@ addons:
 matrix:
   include:
     - compiler: gcc
-      env:
-        - COMPILER=g++-4.8
+      env: CXX=g++-4.8
     - compiler: gcc
-      env:
-        - COMPILER=g++-5
+      env: CXX=g++-5
 before_install:
+  - g++ --version
   - npm install -g npm
 before_script:
   - npm install -g grunt-cli
-  - g++ --version
