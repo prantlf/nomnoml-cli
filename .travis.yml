@@ -21,7 +21,7 @@ matrix:
     - compiler: gcc
       env: CXX=g++-5
 before_install:
-  - g++ --version
   - npm install -g npm
 before_script:
   - npm install -g grunt-cli
+  - g++ --version
