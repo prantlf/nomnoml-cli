@@ -12,14 +12,13 @@ addons:
       - libpango1.0-dev
       - libgif-dev
       - build-essential
+      - gcc-4.8
       - g++-4.8
+      - gcc-5
       - g++-5
-matrix:
-  include:
-    - compiler: gcc
-      env: CXX=g++-4.8
-    - compiler: gcc
-      env: CXX=g++-5
+compiler:
+  - gcc-4.8
+  - gcc-5
 before_install:
   - npm install -g npm
 before_script:
