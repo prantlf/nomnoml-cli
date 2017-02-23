@@ -128,6 +128,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-02-23   v0.4.4   Update dependencies
  * 2016-12-19   v0.4.3   Add --format to be able to select between PNG
                          and SVG (thanks, Emanuele Aina)
  * 2016-26-08   v0.3.0   Upgrade to Grunt 1.x
@@ -142,7 +143,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015-2016 Ferdinand Prantl
+Copyright (c) 2015-2017 Ferdinand Prantl
 
 Licensed under the MIT license.
 
