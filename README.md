@@ -128,6 +128,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-04-16   v0.4.7   Update dependencies
  * 2017-02-23   v0.4.6   Update dependencies
  * 2016-12-19   v0.4.3   Add --format to be able to select between PNG
                          and SVG (thanks, Emanuele Aina)

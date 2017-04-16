@@ -1,7 +1,7 @@
 {
   "name": "nomnoml-cli",
   "description": "Generates images from nomnoml diagram sources on the command line",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "homepage": "https://github.com/prantlf/nomnoml-cli",
   "author": {
     "name": "Ferdinand Prantl",
@@ -35,14 +35,14 @@
     "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls"
   },
   "dependencies": {
-    "canvas": "~1.6.3",
+    "canvas": "~1.6.5",
     "commander": "~2.9.0",
     "nomnoml": "git://github.com/prantlf/nomnoml.git#combined",
     "q": "~2.0.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-nodeunit": "^1.0.0",
     "grunt-coveralls": "^1.0.1",
