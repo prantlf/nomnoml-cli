@@ -37,4 +37,8 @@ if (commander.input) {
   options.input = process.stdin;
 }
 
-generateDiagram(options);
+generateDiagram(options)
+    .catch(function (error) {
+      console.error(error.message);
+      process.exitCode = 1;
+    });

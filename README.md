@@ -25,8 +25,9 @@ Read the documentation about the [nomnoml source format](https://github.com/skan
 
 ## Command-Line Usage
 
-The `nomnoml` script generates a PNG image from the nomnoml source text.
+The `nomnoml` script generates a PNG or SVG image from the nomnoml source text.
 Both file names and standard input and output are supported as parameters.
+If generating the image fails, exit code 1 is returned to the caller.
 
 ```text
 $ nomnoml --help
@@ -60,7 +61,13 @@ The main module exports a function which generates the image:
 ```javascript
 var generateDiagram = require('nomnoml-cli'),
     options = ...;
-generateDiagram(options);
+generateDiagram(options)
+  .then(function (...) {
+    ...
+  })
+  .catch(function (error) {
+    ...
+  });
 ```
 
 Supported properties in the `options` parameter are:
@@ -96,16 +103,19 @@ var generateDiagram = require('nomnoml-cli');
 generateDiagram('[nomnoml]is->[awesome]')
   .then(function (buffer) {
     ...
-  });
+  })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 
 // Convert the standard input to standard output
 generateDiagram({
-  input: process.stdin,
-  output: process.stdout
-});
+    input: process.stdin,
+    output: process.stdout
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
 
 // Create a PNG file from a nomnoml source file
 generateDiagram({
@@ -114,9 +124,9 @@ generateDiagram({
   })
   .then(function () {
     ...
-  });
+  })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 ```
 
@@ -128,6 +138,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-04-22   v0.5.0   Return exit code 1 in case of failure
  * 2017-04-16   v0.4.7   Update dependencies
  * 2017-02-23   v0.4.6   Update dependencies
  * 2016-12-19   v0.4.3   Add --format to be able to select between PNG
