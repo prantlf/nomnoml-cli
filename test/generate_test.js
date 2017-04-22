@@ -81,12 +81,12 @@ exports.when = {
       });
   },
 
-  'called with a string': function (test) {
+  'called with a string expecting a PNG buffer': function (test) {
     var promise = generateDiagram('[nomnoml]is->[awesome]');
     promise
       .then(function (result) {
         test.ok(true, 'succeeds');
-        test.ok(result instanceof Buffer, 'returns a buffer');
+        test.ok(result instanceof Buffer, 'returns a PNG buffer');
         test.done();
       })
       .catch(function (error) {
@@ -95,7 +95,24 @@ exports.when = {
       });
   },
 
-  'called with a string expecting a stream': function (test) {
+  'called with a string expecting a SVG buffer': function (test) {
+    var promise = generateDiagram({
+          input: '[nomnoml]is->[awesome]',
+          format: 'svg'
+        });
+    promise
+      .then(function (result) {
+        test.ok(true, 'succeeds');
+        test.ok(result instanceof Buffer, 'returns a SVG buffer');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
+  'called with a string expecting a PNG stream': function (test) {
     var promise = generateDiagram({
           input: '[nomnoml]is->[awesome]',
           resultType: 'stream'
@@ -106,6 +123,26 @@ exports.when = {
               Object.getPrototypeOf(result).constructor || {};
         test.ok(true, 'succeeds');
         test.equal('PNGStream', constructor.name, 'returns a PNG stream');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
+  'called with a string expecting an SVG stream': function (test) {
+    var promise = generateDiagram({
+          input: '[nomnoml]is->[awesome]',
+          format: 'svg',
+          resultType: 'stream'
+        });
+    promise
+      .then(function (result) {
+        var constructor = typeof result === 'object' &&
+              Object.getPrototypeOf(result).constructor || {};
+        test.ok(true, 'succeeds');
+        test.equal('PassThrough', constructor.name, 'returns a SVG stream');
         test.done();
       })
       .catch(function (error) {
