@@ -52,7 +52,7 @@
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.4.0"
   },
-    "greenkeeper": {
+  "greenkeeper": {
     "ignore": ["grunt-shell"]
   },
   "keywords": [
