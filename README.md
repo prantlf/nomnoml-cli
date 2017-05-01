@@ -130,6 +130,28 @@ generateDiagram({
   });
 ```
 
+## Notes
+
+Contents of other `.nomnoml` files can be imported to the input file using
+the [`#import` directive](https://github.com/skanaar/nomnoml#directives).
+You can use it for sharing style definitions or parts of diagrams among
+multiple diagram sources.
+
+```text
+#import: /usr/local/share/nomnoml/style.nomnoml
+#import: shared/style.nomnoml
+#import: ./sub-diagram.nomnoml
+```
+
+If the imported file path is relative and starts with `./` or `../`, it will
+be appended to the path of the "parent" file, which the specified file is
+being imported to. Otherwise the relative path will be appended to the
+current (executing) directory.
+
+File import directives are processed recursively. However, a single file can
+be imported only once. If imported once more, scond and other occurrences
+will be replaced by an empty string.
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding

@@ -13,7 +13,7 @@ commander.version('0.5.1')
     .option('-h, --height <pixels>', 'height of the canvas to draw on', parseInt);
 
 commander.on('--help', function () {
-  console.log('  The default output format is PNG.  The default canvas size is 640x480 pixels.');
+  console.log('  The default output format is PNG. The default canvas size is 640x480 pixels.');
   console.log('  If the input file is omitted, the source is read from the standard input.');
   console.log('  If the output file is omitted, the image is written to the standard output.');
   console.log();
