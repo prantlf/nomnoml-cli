@@ -3,7 +3,7 @@
 var commander = require('commander'),
     generateDiagram = require('../lib/generate');
 
-commander.version('0.5.0')
+commander.version('0.5.1')
     .description('  Generates PNG images from nomnoml diagram sources')
     .usage('[option]')
     .option('-i, --input <path>', 'file with nomnoml source to read from')
