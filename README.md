@@ -160,6 +160,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-05-01   v0.6.0   Add support for the #import directive
  * 2017-05-01   v0.5.1   Swith the nomnoml dependency from my fork to the upstream
  * 2017-04-22   v0.5.0   Return exit code 1 in case of failure
  * 2017-04-16   v0.4.7   Update dependencies
