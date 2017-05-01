@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 var commander = require('commander'),
-    generateDiagram = require('../lib/generate');
+    generateDiagram = require('../lib/generate'),
+    package = require('../package.json');
 
-commander.version('0.6.0')
-    .description('  Generates PNG images from nomnoml diagram sources')
+commander.version(package.version)
+    .description('  Generates images from nomnoml diagram sources')
     .usage('[option]')
     .option('-i, --input <path>', 'file with nomnoml source to read from')
     .option('-o, --output <path>', 'file for the image output to write to')

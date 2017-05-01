@@ -1,4 +1,5 @@
-# nomnoml-cli [![NPM version](https://badge.fury.io/js/nomnoml-cli.png)](http://badge.fury.io/js/nomnoml-cli) [![Build Status](https://travis-ci.org/prantlf/nomnoml-cli.png)](https://travis-ci.org/prantlf/nomnoml-cli) [![Coverage Status](https://coveralls.io/repos/prantlf/nomnoml-cli/badge.svg)](https://coveralls.io/r/prantlf/nomnoml-cli) [![Dependency Status](https://david-dm.org/prantlf/nomnoml-cli.svg)](https://david-dm.org/prantlf/nomnoml-cli) [![devDependency Status](https://david-dm.org/prantlf/nomnoml-cli/dev-status.svg)](https://david-dm.org/prantlf/nomnoml-cli#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/prantlf/nomnoml-cli.svg)](https://greenkeeper.io/) [![Code Climate](https://codeclimate.com/github/prantlf/nomnoml-cli/badges/gpa.svg)](https://codeclimate.com/github/prantlf/nomnoml-cli) [![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/nomnoml-cli) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# nomnoml-cli [![NPM version](https://badge.fury.io/js/nomnoml-cli.png)](http://badge.fury.io/js/nomnoml-cli) [![Build Status](https://travis-ci.org/prantlf/nomnoml-cli.png)](https://travis-ci.org/prantlf/nomnoml-cli) [![Coverage Status](https://coveralls.io/repos/prantlf/nomnoml-cli/badge.svg)](https://coveralls.io/r/prantlf/nomnoml-cli) [![Dependency Status](https://david-dm.org/prantlf/nomnoml-cli.svg)](https://david-dm.org/prantlf/nomnoml-cli) [![devDependency Status](https://david-dm.org/prantlf/nomnoml-cli/dev-status.svg)](https://david-dm.org/prantlf/nomnoml-cli#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/prantlf/nomnoml-cli.svg)](https://greenkeeper.io/) [![Code Climate](https://codeclimate.com/github/prantlf/nomnoml-cli/badges/gpa.svg)](https://codeclimate.com/github/prantlf/nomnoml-cli) [![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/nomnoml-cli) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 
 [![NPM Downloads](https://nodei.co/npm/nomnoml-cli.png?downloads=true&stars=true)](https://www.npmjs.com/package/nomnoml-cli)
 
@@ -8,7 +9,7 @@ on the command line and provides a library for a programmatic usage from
 
 ## Getting Started
 
-Make sure that you have [NodeJS] >= 0.12 installed.
+Make sure that you have [NodeJS] >= 4 installed.
 
 1. Install [pre-requisites](https://github.com/Automattic/node-canvas/wiki/_pages)
    of the [node-canvas](https://github.com/Automattic/node-canvas) module depending
@@ -160,6 +161,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2017-05-01   v0.6.1   Enable automatic versioning by semantic-release
  * 2017-05-01   v0.6.0   Add support for the #import directive
  * 2017-05-01   v0.5.1   Swith the nomnoml dependency from my fork to the upstream
  * 2017-04-22   v0.5.0   Return exit code 1 in case of failure
