@@ -154,7 +154,7 @@ exports.when = {
   'called with input and output streams': function (test) {
     var name = path.join(__dirname, 'piracy'),
         promise = generateDiagram({
-          input: fs.createReadStream(name + '.nomnoml'),
+          input: fs.createReadStream(name + '_process-paths.nomnoml'),
           output: fs.createWriteStream(name + '.png')
         });
     promise
@@ -174,7 +174,7 @@ exports.when = {
   'called with input and output streams, with format=svg': function (test) {
     var name = path.join(__dirname, 'piracy'),
         promise = generateDiagram({
-          input: fs.createReadStream(name + '.nomnoml'),
+          input: fs.createReadStream(name + '_process-paths.nomnoml'),
           format: 'svg',
           output: fs.createWriteStream(name + '.svg')
         });

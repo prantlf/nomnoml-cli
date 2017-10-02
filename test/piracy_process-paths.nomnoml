@@ -1,5 +1,5 @@
-#import: ./pirates/pirate.nomnoml
-#import: ./pirates/marauder.nomnoml
+#import: test/pirates/pirate.nomnoml
+#import: test/pirates/marauder.nomnoml
 
 [<start>st]->[<state>plunder]
 [plunder]->[<choice>more loot]
