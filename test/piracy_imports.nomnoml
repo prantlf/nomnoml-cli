@@ -1,0 +1,7 @@
+#import: ./pirates/pirate.nomnoml
+#import: ./pirates/marauder.nomnoml
+
+[<start>st]->[<state>plunder]
+[plunder]->[<choice>more loot]
+[more loot]->[st]
+[more loot] no ->[<end>e]
