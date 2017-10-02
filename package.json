@@ -36,10 +36,10 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
-    "canvas": "~1.6.5",
-    "commander": "~2.11.0",
-    "nomnoml": "~0.2.0",
-    "q": "~2.0.3"
+    "canvas": "^1.6.7",
+    "commander": "^2.11.0",
+    "nomnoml": "^0.2.0",
+    "q": "^2.0.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
@@ -52,7 +52,7 @@
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.4.0",
-    "semantic-release": "^8.0.0"
+    "semantic-release": "^8.0.3"
   },
   "greenkeeper": {
     "ignore": [
