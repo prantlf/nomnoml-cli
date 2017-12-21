@@ -2,7 +2,7 @@ sudo: false
 language: node_js
 cache:
   directories:
-    - node_modules
+    - ~/.npm
 notifications:
   email: false
 addons:
@@ -19,9 +19,9 @@ addons:
 env:
   - CXX=g++-4.8
 node_js:
-  - '4'
-  - '6'
   - '8'
+  - '6'
+  - '4'
 before_install:
   - npm install -g npm
 before_script:

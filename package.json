@@ -33,11 +33,11 @@
     "test": "grunt",
     "check_coverage": "NOMNOML_CLI_COVERAGE=1 grunt",
     "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "canvas": "^1.6.7",
-    "commander": "^2.11.0",
+    "canvas": "^1.6.9",
+    "commander": "^2.12.2",
     "nomnoml": "^0.2.0",
     "q": "^2.0.3"
   },
