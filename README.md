@@ -9,7 +9,7 @@ on the command line and provides a library for a programmatic usage from
 
 ## Getting Started
 
-Make sure that you have [NodeJS] >= 4 installed.
+Make sure that you have [NodeJS] >= 6 installed.
 
 1. Install [pre-requisites](https://github.com/Automattic/node-canvas/wiki/_pages)
    of the [node-canvas](https://github.com/Automattic/node-canvas) module depending
@@ -161,6 +161,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2018-04-27   v1.0.0   Dropped support of Node.js 4
  * 2017-05-01   v0.6.1   Enable automatic versioning by semantic-release
  * 2017-05-01   v0.6.0   Add support for the #import directive
  * 2017-05-01   v0.5.1   Swith the nomnoml dependency from my fork to the upstream
@@ -181,7 +182,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015-2017 Ferdinand Prantl
+Copyright (c) 2015-2018 Ferdinand Prantl
 
 Licensed under the MIT license.
 
