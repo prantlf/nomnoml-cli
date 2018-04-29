@@ -54,7 +54,7 @@
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.4.0",
     "semantic-release": "^15.1.7",
-    "travis-deploy-once": "^4.4.1"
+    "travis-deploy-once": "^5.0.0"
   },
   "keywords": [
     "nomnoml",
