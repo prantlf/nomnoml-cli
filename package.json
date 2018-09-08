@@ -2,7 +2,7 @@
   "name": "nomnoml-cli",
   "description": "Generates images from nomnoml diagram sources on the command line",
   "version": "0.0.0-development",
-  "homepage": "https://github.com/prantlf/nomnoml-cli",
+  "homepage": "https://github.com/prantlf/nomnoml-cli#readme",
   "author": {
     "name": "Ferdinand Prantl",
     "email": "prantlf@gmail.com",
