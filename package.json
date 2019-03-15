@@ -32,29 +32,25 @@
   "scripts": {
     "test": "grunt",
     "check_coverage": "NOMNOML_CLI_COVERAGE=1 grunt",
-    "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls"
   },
   "dependencies": {
-    "canvas": "^1.6.12",
-    "commander": "^2.18.0",
-    "nomnoml": "^0.2.0",
+    "canvas": "^2.3.1",
+    "commander": "^2.19.0",
+    "nomnoml": "^0.3.0",
     "q": "^2.0.3"
   },
   "devDependencies": {
     "grunt": "^1.0.3",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-coveralls": "^2.0.0",
     "grunt-istanbul": "^0.8.0",
-    "grunt-shell": "^2.1.0",
+    "grunt-shell": "^3.0.1",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^4.0.0",
-    "time-grunt": "^1.4.0",
-    "semantic-release": "^15.9.14",
-    "travis-deploy-once": "^5.0.7"
+    "time-grunt": "^2.0.0"
   },
   "keywords": [
     "nomnoml",
