@@ -191,7 +191,7 @@ your code using Grunt.
 
 ## License
 
-Copyright (c) 2015-2018 Ferdinand Prantl
+Copyright (c) 2015-2019 Ferdinand Prantl
 
 Licensed under the MIT license.
 
