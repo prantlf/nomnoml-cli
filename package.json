@@ -35,7 +35,7 @@
     "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls"
   },
   "dependencies": {
-    "canvas": "^2.3.1",
+    "canvas": "^1.6.13",
     "commander": "^2.19.0",
     "nomnoml": "^0.3.0",
     "q": "^2.0.3"
