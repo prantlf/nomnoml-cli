@@ -170,6 +170,7 @@ your code using Grunt.
 
 ## Release History
 
+ * 2019-09-22   v2.0.0   Dropped support of Node.js 6
  * 2018-04-27   v1.0.0   Dropped support of Node.js 4
  * 2017-05-01   v0.6.1   Enable automatic versioning by semantic-release
  * 2017-05-01   v0.6.0   Add support for the #import directive
