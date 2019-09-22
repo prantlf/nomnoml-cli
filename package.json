@@ -36,20 +36,20 @@
   },
   "dependencies": {
     "canvas": "^1.6.13",
-    "commander": "^2.19.0",
-    "nomnoml": "^0.3.0",
+    "commander": "^3.0.1",
+    "nomnoml": "^0.6.1",
     "q": "^2.0.3"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-coveralls": "^2.0.0",
     "grunt-istanbul": "^0.8.0",
     "grunt-shell": "^3.0.1",
     "jshint-stylish": "^2.2.1",
-    "load-grunt-tasks": "^4.0.0",
+    "load-grunt-tasks": "^5.1.0",
     "time-grunt": "^2.0.0"
   },
   "keywords": [
