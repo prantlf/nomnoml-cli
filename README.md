@@ -18,7 +18,7 @@ on the command line and provides a library for a programmatic usage from
 
 ## Getting Started
 
-Make sure that you have [NodeJS] >= 6 installed.
+Make sure that you have [NodeJS] >= 8 installed.
 
 1. Install [pre-requisites](https://github.com/Automattic/node-canvas/wiki/_pages)
    of the [node-canvas](https://github.com/Automattic/node-canvas) module depending
