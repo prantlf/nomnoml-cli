@@ -1,8 +1,4 @@
-sudo: false
 language: node_js
-cache:
-  directories:
-    - ~/.npm
 notifications:
   email: false
 addons:
@@ -19,9 +15,9 @@ addons:
 env:
   - CXX=g++-4.8
 node_js:
-  - '10'
-  - '8'
-  - '6'
+  - node
+  - lts/*
+  - 8
 before_script:
   - npm install -g grunt-cli
 after_success:
