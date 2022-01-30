@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/prantlf/nomnoml-cli/compare/v3.0.0...v3.1.0) (2022-01-30)
+
+
+### Features
+
+* Support JPG and PDF as additional output formats ([5e67b16](https://github.com/prantlf/nomnoml-cli/commit/5e67b16386c603e5b028b87a1a60eac942d0822c))
+
 # [3.0.0](https://github.com/prantlf/nomnoml-cli/compare/v2.0.0...v3.0.0) (2022-01-30)
 
 
