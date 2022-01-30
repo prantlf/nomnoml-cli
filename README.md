@@ -30,7 +30,7 @@ Read the documentation about the [nomnoml source format](https://github.com/skan
 
 ## Command-Line Usage
 
-The `nomnoml` script generates a PNG or SVG image from the nomnoml source text.
+The `nomnoml` script generates a png, jpg, svg or pdf image from the nomnoml source text.
 Both file names and standard input and output are supported as parameters.
 If generating the image fails, exit code 1 is returned to the caller.
 
@@ -45,11 +45,11 @@ $ nomnoml --help
     -V, --version          output the version number
     -i, --input <path>     file with nomnoml source to read from
     -o, --output <path>    file for the image output to write to
-    -f, --format <format>  output format (png or svg)
+    -f, --format <format>  output format (png, jpg, svg, pdf)
     -w, --width <pixels>   width of the canvas to draw on
     -H, --height <pixels>  height of the canvas to draw on
 
-  The default output format is PNG. The default canvas size is 640x480 pixels.
+  The default output format is png. The default canvas size is 640x480 pixels.
   If the input file is omitted, the source is read from the standard input.
   If the output file is omitted, the image is written to the standard output.
 
@@ -81,7 +81,8 @@ object with the following supported properties:
 * `resultType`: type of the object to resolve the promise with if the
     `output` parameter is not provided ('buffer' or 'stream'; the former
     is default)
-* `format`: output image format ('png' or 'svg'; the former is default)
+* `format`: output image format ('png', 'jpg', 'svg' or 'pdf'; the first
+    is default)
 * `width`: canvas width in pixels (640 by default)
 * `height`: canvas height in pixels (480 by default)
 

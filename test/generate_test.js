@@ -115,10 +115,30 @@ exports.when = {
       .then(async function (result) {
         test.ok(true, 'succeeds');
         const buffer = await readStream(result);
-        test.equal(137, buffer[0], 'returns 137 in a PNG stream');
         test.equal('P'.charCodeAt(0), buffer[1], 'returns "P" in a PNG stream');
         test.equal('N'.charCodeAt(0), buffer[2], 'returns "N" in a PNG stream');
         test.equal('G'.charCodeAt(0), buffer[3], 'returns "G" in a PNG stream');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
+  'called with a string expecting a JPG stream': function (test) {
+    generateDiagram({
+      input: '[nomnoml]is->[awesome]',
+      format: 'jpg',
+      resultType: 'stream'
+    })
+      .then(async function (result) {
+        test.ok(true, 'succeeds');
+        const buffer = await readStream(result);
+        test.equal('J'.charCodeAt(0), buffer[6], 'returns "J" in a JPG stream');
+        test.equal('F'.charCodeAt(0), buffer[7], 'returns "F" in a JPG stream');
+        test.equal('I'.charCodeAt(0), buffer[8], 'returns "I" in a JPG stream');
+        test.equal('F'.charCodeAt(0), buffer[9], 'returns "F" in a JPG stream');
         test.done();
       })
       .catch(function (error) {
@@ -141,6 +161,27 @@ exports.when = {
         test.equal('x'.charCodeAt(0), buffer[2], 'returns "x" in a SVG stream');
         test.equal('m'.charCodeAt(0), buffer[3], 'returns "m" in a SVG stream');
         test.equal('l'.charCodeAt(0), buffer[4], 'returns "l" in a SVG stream');
+        test.done();
+      })
+      .catch(function (error) {
+        test.ok(false, error);
+        test.done();
+      });
+  },
+
+  'called with a string expecting an PDF stream': function (test) {
+    generateDiagram({
+      input: '[nomnoml]is->[awesome]',
+      format: 'pdf',
+      resultType: 'stream'
+    })
+      .then(async function (result) {
+        test.ok(true, 'succeeds');
+        const buffer = await readStream(result);
+        test.equal('%'.charCodeAt(0), buffer[0], 'returns "%" in a PDF stream');
+        test.equal('P'.charCodeAt(0), buffer[1], 'returns "P" in a PDF stream');
+        test.equal('D'.charCodeAt(0), buffer[2], 'returns "D" in a PDF stream');
+        test.equal('F'.charCodeAt(0), buffer[3], 'returns "F" in a PDF stream');
         test.done();
       })
       .catch(function (error) {
