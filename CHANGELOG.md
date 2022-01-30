@@ -15,7 +15,7 @@
 
 ### BREAKING CHANGES
 
-* * The minimum version of Node.js is 12 instead of 8. The `commander` dependency requires at least that version.
+* The minimum version of Node.js is 12 instead of 8. The `commander` dependency requires at least that version.
 * The command line parameter to set the image height is `-H, --height`. The `h` conflicted with the `-h, --help` option.
 
 ## 2019-09-22   v2.0.0
