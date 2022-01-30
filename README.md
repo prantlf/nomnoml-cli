@@ -5,7 +5,6 @@
 ](https://www.npmjs.com/package/nomnoml-cli)
 [![codecov](https://codecov.io/gh/prantlf/nomnoml-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/prantlf/nomnoml-cli)
 [![Code Climate](https://codeclimate.com/github/prantlf/nomnoml-cli/badges/gpa.svg)](https://codeclimate.com/github/prantlf/nomnoml-cli)
-[![Codacy Badge](https://www.codacy.com/project/badge/f3896e8dfa5342b8add12d50390edfcd)](https://www.codacy.com/public/prantlf/nomnoml-cli)
 
 Generates images from [nomnoml](http://www.nomnoml.com/) diagram sources
 on the command line and provides a library for a programmatic usage from
