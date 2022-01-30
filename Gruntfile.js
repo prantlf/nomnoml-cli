@@ -1,24 +1,18 @@
 'use strict';
 
 module.exports = function (grunt) {
-
-  var coverage = process.env.NOMNOML_CLI_COVERAGE;
+  const { NOMNOML_CLI_COVERAGE: coverage } = process.env;
 
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-
-    jshint: {
-      all:     [
+    eslint: {
+      target:     [
         'Gruntfile.js',
         'lib/*.js',
         'bin/nomnoml',
         '<%= nodeunit.tests %>'
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
+      ]
     },
 
     shell: {
@@ -60,21 +54,13 @@ module.exports = function (grunt) {
         dir: 'coverage',
         print: 'detail'
       }
-    },
-
-    coveralls: {
-      tests: {
-        src: 'coverage/lcov.info'
-      }
     }
-
   });
 
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('default', coverage ?
-    ['jshint', 'clean', 'instrument', 'shell', 'nodeunit',
+    ['eslint', 'clean', 'instrument', 'shell', 'nodeunit',
      'storeCoverage', 'makeReport'] :
-    ['jshint', 'clean:tests', 'shell', 'nodeunit']);
-
+    ['eslint', 'clean:tests', 'shell', 'nodeunit']);
 };

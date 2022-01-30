@@ -1,0 +1,39 @@
+name: Test or Release
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test-or-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Sources
+      uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev
+    - name: Install Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 'lts/*'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install PNPM
+      uses: pnpm/action-setup@v2
+      with:
+        version: '>=6'
+        run_install: |
+          - args: [--frozen-lockfile, --no-verify-store-integrity]
+    - name: Test
+      run: npm run cover
+    - name: Coverage
+      run: pnpx -y codecov --disable=gcov
+    - name: Publish
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        semantic_version: 18
+        branches: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

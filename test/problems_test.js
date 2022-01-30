@@ -1,9 +1,9 @@
 'use strict';
 
-var exec = require('child_process').exec,
-    coverage = process.env.NOMNOML_CLI_COVERAGE,
-    generateDiagram = require(coverage ?
-      '../coverage/lib/generate' : '../lib/generate');
+const { exec } = require('child_process');
+const coverage = process.env.NOMNOML_CLI_COVERAGE;
+
+require(coverage ? '../coverage/lib/generate' : '../lib/generate');
 
 function checkFailure(test, error, stdout, stderr) {
   test.ok(error != null, 'fails');
@@ -14,7 +14,6 @@ function checkFailure(test, error, stdout, stderr) {
 }
 
 exports.when = {
-
   'command-line tool called with wrong arguments': function (test) {
     exec('node ./bin/nomnoml -a',
         checkFailure.bind(null, test));
@@ -29,5 +28,4 @@ exports.when = {
     exec('node ./bin/nomnoml -i ./test/invalid.nomnoml',
         checkFailure.bind(null, test));
   }
-
 };

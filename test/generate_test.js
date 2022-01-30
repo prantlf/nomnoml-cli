@@ -1,26 +1,33 @@
 'use strict';
 
-var fs = require('fs'),
-    path = require('path'),
-    coverage = process.env.NOMNOML_CLI_COVERAGE,
-    generateDiagram = require(coverage ?
-      '../coverage/lib/generate' : '../lib/generate');
+const { statSync, unlinkSync, createReadStream, createWriteStream } = require('fs');
+const { join } = require('path');
+const { NOMNOML_CLI_COVERAGE: coverage } = process.env;
+const generateDiagram = require(coverage ? '../coverage/lib/generate' : '../lib/generate');
+
+function readStream (stream) {
+  const chunks = [];
+  return new Promise((resolve, reject) => {
+    stream.on('data', chunk => chunks.push(Buffer.from(chunk)));
+    stream.on('error', error => reject(error));
+    stream.on('end', () => resolve(Buffer.concat(chunks)));
+  });
+}
 
 exports.when = {
-
   'called on the command line': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        output = fs.statSync(name + '.png');
+    const name = join(__dirname, 'piracy');
+    const output = statSync(name + '.png');
     test.ok(output.isFile() && output.size > 0, 'creates a PNG file');
-    fs.unlinkSync(name + '.png');
+    unlinkSync(name + '.png');
     test.done();
   },
 
   'called on the command line with format=svg': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        output = fs.statSync(name + '.svg');
+    const name = join(__dirname, 'piracy');
+    const output = statSync(name + '.svg');
     test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
-    fs.unlinkSync(name + '.svg');
+    unlinkSync(name + '.svg');
     test.done();
   },
 
@@ -29,16 +36,8 @@ exports.when = {
     test.done();
   },
 
-  'called': function (test) {
-    var promise = generateDiagram();
-    test.equal('object', typeof promise, 'returns a promise');
-    test.equal('function', typeof promise.then, 'returns a complete promise');
-    test.done();
-  },
-
   'called without arguments': function (test) {
-    var promise = generateDiagram();
-    promise
+    generateDiagram()
       .then(function () {
         test.ok(false, 'should fail');
         test.done();
@@ -52,8 +51,7 @@ exports.when = {
   },
 
   'called without input': function (test) {
-    var promise = generateDiagram({});
-    promise
+    generateDiagram({})
       .then(function () {
         test.ok(false, 'should fail');
         test.done();
@@ -67,8 +65,7 @@ exports.when = {
   },
 
   'called with invalid arguments': function (test) {
-    var promise = generateDiagram(1);
-    promise
+    generateDiagram(1)
       .then(function () {
         test.ok(false, 'should fail');
         test.done();
@@ -82,8 +79,7 @@ exports.when = {
   },
 
   'called with a string expecting a PNG buffer': function (test) {
-    var promise = generateDiagram('[nomnoml]is->[awesome]');
-    promise
+    generateDiagram('[nomnoml]is->[awesome]')
       .then(function (result) {
         test.ok(true, 'succeeds');
         test.ok(result instanceof Buffer, 'returns a PNG buffer');
@@ -96,11 +92,10 @@ exports.when = {
   },
 
   'called with a string expecting a SVG buffer': function (test) {
-    var promise = generateDiagram({
-          input: '[nomnoml]is->[awesome]',
-          format: 'svg'
-        });
-    promise
+    generateDiagram({
+      input: '[nomnoml]is->[awesome]',
+      format: 'svg'
+    })
       .then(function (result) {
         test.ok(true, 'succeeds');
         test.ok(result instanceof Buffer, 'returns a SVG buffer');
@@ -113,16 +108,17 @@ exports.when = {
   },
 
   'called with a string expecting a PNG stream': function (test) {
-    var promise = generateDiagram({
-          input: '[nomnoml]is->[awesome]',
-          resultType: 'stream'
-        });
-    promise
-      .then(function (result) {
-        var constructor = typeof result === 'object' &&
-              Object.getPrototypeOf(result).constructor || {};
+    generateDiagram({
+      input: '[nomnoml]is->[awesome]',
+      resultType: 'stream'
+    })
+      .then(async function (result) {
         test.ok(true, 'succeeds');
-        test.equal('PNGStream', constructor.name, 'returns a PNG stream');
+        const buffer = await readStream(result);
+        test.equal(137, buffer[0], 'returns 137 in a PNG stream');
+        test.equal('P'.charCodeAt(0), buffer[1], 'returns "P" in a PNG stream');
+        test.equal('N'.charCodeAt(0), buffer[2], 'returns "N" in a PNG stream');
+        test.equal('G'.charCodeAt(0), buffer[3], 'returns "G" in a PNG stream');
         test.done();
       })
       .catch(function (error) {
@@ -132,17 +128,19 @@ exports.when = {
   },
 
   'called with a string expecting an SVG stream': function (test) {
-    var promise = generateDiagram({
-          input: '[nomnoml]is->[awesome]',
-          format: 'svg',
-          resultType: 'stream'
-        });
-    promise
-      .then(function (result) {
-        var constructor = typeof result === 'object' &&
-              Object.getPrototypeOf(result).constructor || {};
+    generateDiagram({
+      input: '[nomnoml]is->[awesome]',
+      format: 'svg',
+      resultType: 'stream'
+    })
+      .then(async function (result) {
         test.ok(true, 'succeeds');
-        test.equal('PassThrough', constructor.name, 'returns a SVG stream');
+        const buffer = await readStream(result);
+        test.equal('<'.charCodeAt(0), buffer[0], 'returns "<" in a SVG stream');
+        test.equal('?'.charCodeAt(0), buffer[1], 'returns "?" in a SVG stream');
+        test.equal('x'.charCodeAt(0), buffer[2], 'returns "x" in a SVG stream');
+        test.equal('m'.charCodeAt(0), buffer[3], 'returns "m" in a SVG stream');
+        test.equal('l'.charCodeAt(0), buffer[4], 'returns "l" in a SVG stream');
         test.done();
       })
       .catch(function (error) {
@@ -152,17 +150,16 @@ exports.when = {
   },
 
   'called with input and output streams': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        promise = generateDiagram({
-          input: fs.createReadStream(name + '_process-paths.nomnoml'),
-          output: fs.createWriteStream(name + '.png')
-        });
-    promise
-      .then(function (result) {
-        var output = fs.statSync(name + '.png');
+    const name = join(__dirname, 'piracy');
+    generateDiagram({
+      input: createReadStream(name + '_process-paths.nomnoml'),
+      output: createWriteStream(name + '.png')
+    })
+      .then(function (/*result*/) {
+        const output = statSync(name + '.png');
         test.ok(true, 'succeeds');
         test.ok(output.isFile() && output.size > 0, 'creates a PNG file');
-        fs.unlinkSync(name + '.png');
+        unlinkSync(name + '.png');
         test.done();
       })
       .catch(function (error) {
@@ -172,18 +169,17 @@ exports.when = {
   },
 
   'called with input and output streams, with format=svg': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        promise = generateDiagram({
-          input: fs.createReadStream(name + '.nomnoml'),
-          format: 'svg',
-          output: fs.createWriteStream(name + '.svg')
-        });
-    promise
-      .then(function (result) {
-        var output = fs.statSync(name + '.svg');
+    const name = join(__dirname, 'piracy');
+    generateDiagram({
+      input: createReadStream(name + '.nomnoml'),
+      format: 'svg',
+      output: createWriteStream(name + '.svg')
+    })
+      .then(function (/*result*/) {
+        const output = statSync(name + '.svg');
         test.ok(true, 'succeeds');
         test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
-        fs.unlinkSync(name + '.svg');
+        unlinkSync(name + '.svg');
         test.done();
       })
       .catch(function (error) {
@@ -193,17 +189,16 @@ exports.when = {
   },
 
   'called with correct input and output file names': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        promise = generateDiagram({
-          inputFile: name + '_imports.nomnoml',
-          output: name + '.png'
-        });
-    promise
-      .then(function (result) {
-        var output = fs.statSync(name + '.png');
+    const name = join(__dirname, 'piracy');
+    generateDiagram({
+      inputFile: name + '_imports.nomnoml',
+      output: name + '.png'
+    })
+      .then(function (/*result*/) {
+        const output = statSync(name + '.png');
         test.ok(true, 'succeeds');
         test.ok(output.isFile() && output.size > 0, 'creates a PNG file');
-        fs.unlinkSync(name + '.png');
+        unlinkSync(name + '.png');
         test.done();
       })
       .catch(function (error) {
@@ -213,18 +208,17 @@ exports.when = {
   },
 
   'called with correct input and output file names, with format=svg': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        promise = generateDiagram({
-          inputFile: name + '.nomnoml',
-          format: 'svg',
-          output: name + '.svg'
-        });
-    promise
-      .then(function (result) {
-        var output = fs.statSync(name + '.svg');
+    const name = join(__dirname, 'piracy');
+    generateDiagram({
+      inputFile: name + '.nomnoml',
+      format: 'svg',
+      output: name + '.svg'
+    })
+      .then(function (/*result*/) {
+        const output = statSync(name + '.svg');
         test.ok(true, 'succeeds');
         test.ok(output.isFile() && output.size > 0, 'creates a SVG file');
-        fs.unlinkSync(name + '.svg');
+        unlinkSync(name + '.svg');
         test.done();
       })
       .catch(function (error) {
@@ -234,10 +228,9 @@ exports.when = {
   },
 
   'called with an invalid input file name': function (test) {
-    var promise = generateDiagram({
-          inputFile: 'nonsense'
-        });
-    promise
+    generateDiagram({
+      inputFile: 'nonsense'
+    })
       .then(function () {
         test.ok(false, 'should fail');
         test.done();
@@ -251,12 +244,11 @@ exports.when = {
   },
 
   'called with an invalid output file name': function (test) {
-    var name = path.join(__dirname, 'piracy'),
-        promise = generateDiagram({
-          inputFile: name + '.nomnoml',
-          output: ':/?*'
-        });
-    promise
+    const name = join(__dirname, 'piracy');
+    generateDiagram({
+      inputFile: name + '.nomnoml',
+      output: ':/?*'
+    })
       .then(function () {
         test.ok(false, 'should fail');
         test.done();
@@ -268,5 +260,4 @@ exports.when = {
         test.done();
       });
   }
-
 };

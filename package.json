@@ -1,7 +1,7 @@
 {
   "name": "nomnoml-cli",
   "description": "Generates images from nomnoml diagram sources on the command line",
-  "version": "0.0.0-development",
+  "version": "2.0.0",
   "homepage": "https://github.com/prantlf/nomnoml-cli#readme",
   "author": {
     "name": "Ferdinand Prantl",
@@ -23,32 +23,49 @@
     }
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "main": "./lib/generate.js",
   "bin": {
     "nomnoml": "./bin/nomnoml"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "test": "grunt",
-    "check_coverage": "NOMNOML_CLI_COVERAGE=1 grunt",
-    "post_coverage": "NOMNOML_CLI_COVERAGE=1 grunt default coveralls"
+    "cover": "NOMNOML_CLI_COVERAGE=1 grunt"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/github",
+        {
+          "failComment": false
+        }
+      ],
+      "@semantic-release/git"
+    ]
   },
   "dependencies": {
-    "canvas": "^2.6.0",
-    "commander": "^3.0.1",
-    "nomnoml": "^0.6.1",
-    "q": "^2.0.3"
+    "canvas": "^2.9.0",
+    "commander": "^9.0.0",
+    "nomnoml": "^1.4.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.4",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "grunt": "^1.4.1",
     "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-nodeunit": "^2.0.0",
-    "grunt-coveralls": "^2.0.0",
+    "grunt-contrib-nodeunit": "^4.0.0",
+    "grunt-eslint": "^24.0.0",
     "grunt-istanbul": "^0.8.0",
     "grunt-shell": "^3.0.1",
-    "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^5.1.0",
     "time-grunt": "^2.0.0"
   },
