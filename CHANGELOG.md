@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/prantlf/nomnoml-cli/compare/v2.0.0...v3.0.0) (2022-01-30)
+
+
+### Bug Fixes
+
+* Upgrade dependencies ([7ab6b54](https://github.com/prantlf/nomnoml-cli/commit/7ab6b541fef2b740e68d983add4d744f7b506fc7))
+
+
+### BREAKING CHANGES
+
+* * The minimum version of Node.js is 12 instead of 8. The `commander` dependency requires at least that version.
+* The command line parameter to set the image height is `-H, --height`. The `h` conflicted with the `-h, --help` option.
+
 ## 2019-09-22   v2.0.0
 
 Dropped support of Node.js 6
